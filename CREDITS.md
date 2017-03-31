@@ -6,7 +6,7 @@
 
 ## Web Scraping
 
-### Capybara Docs
+### Capybara
 
   + [Save and open page](http://www.rubydoc.info/github/jnicklas/capybara/Capybara%2FSession%3Asave_and_open_page)
   + [Interacting with forms](https://github.com/teamcapybara/capybara#interacting-with-forms)
@@ -22,7 +22,15 @@
   + http://stackoverflow.com/questions/28240702/obtain-browser-downloaded-files-with-capybara
 
 
-### Creating PDF Tempfiles
+#### Creating PDF Tempfiles
 
   + https://ruby-doc.org/stdlib-1.9.3/libdoc/tempfile/rdoc/Tempfile.html
   + http://blog.smartlogic.io/2012-08-20-testing-pdf-content-with-capybara/
+
+### Mechanize
+
+This works much better than capybara for the purpose of downloading a file and accessing its contents.
+
+  + http://stackoverflow.com/questions/16499069/how-to-save-file-downloaded-by-button-click-with-mechanize
+  + http://docs.seattlerb.org/mechanize/GUIDE_rdoc.html
+  + http://docs.seattlerb.org/mechanize/EXAMPLES_rdoc.html
