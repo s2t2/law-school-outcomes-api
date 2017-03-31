@@ -1,55 +1,30 @@
 require "pry"
 require "json"
 require "capybara"
-require 'capybara/poltergeist' # require "capybara-webkit" # require "selenium-webdriver"
-require "law_school_outcomes"
+require "capybara-webkit"
 
-class MySession < Capybara::Session
-  URL = "http://employmentsummary.abaquestionnaire.org/"
+DOWNLOADS_DIR = File.expand_path("../tmp/reports")
 
-  # @param [symbol] driver A web driver like: :poltergeist OR :webkit OR :selenium
-  def initialize(driver = :poltergeist)
-    super(driver)
-  end
-
-  def visit_page
-    visit(URL)
-    puts "VISITING #{current_url}"
-  end
-
-  def inspect_page
-    file = File.join(Dir.pwd, "test/capybara-saved-page.html")
-    FileUtils.rm_rf(file)
-    save_and_open_page(file)
-  end
+Capybara::Webkit.configure do |config|
+  config.debug = true # Enable debug mode. Prints a log of everything the driver is doing.
+  config.allow_unknown_urls # Allow pages to make requests to any URL without issuing a warning.
+  config.timeout = 5 # Timeout if requests take longer than 5 seconds
+  config.skip_image_loading # Don't load images
+  config.raise_javascript_errors = true # Raise JavaScript errors as exceptions
 end
 
-session = MySession.new
+Capybara.javascript_driver = :webkit
 
-session.visit_page
+session = Capybara::Session.new(:webkit)
 
-# TODO: loop through each of the available options
-# school_selector = session.find("#ddlUniversity")
-# options = school_selector.all("option")
-
-#
-# click on select with id="ddlUniversity" and name="ddlUniversity"
-# ... and choose the relevant university
-#
-
+session.visit("http://employmentsummary.abaquestionnaire.org/")
 session.select('YALE UNIVERSITY', from: 'ddlUniversity')
-school_id = session.find("#ddlUniversity").value
-puts "SCHOOL: #{school_id}"
+# session.click_button('Generate Report')
 
-#
-# click on select with id="ddlYear" and name="ddlYear"
-# ... and choose 2015
-#
+#Capybara.register_driver :chrome do |app|
+#  profile = Selenium::WebDriver::Chrome::Profile.new
+#  profile["download.default_directory"] = DOWNLOADS_DIR
+#  Capybara::Selenium::Driver.new(app, :browser => :chrome, :profile => profile)
+#end
 
-year = session.find("#ddlYear").value
-puts "YEAR: #{year}"
-
-#
-# click button with id="btnSubmit"
-# session.click_button 'Generate Report'
-#
+#Capybara.default_driver = Capybara.javascript_driver = :chrome
