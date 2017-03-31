@@ -16,6 +16,8 @@ GEM
     domainatrix (0.0.11)
       addressable
     hashery (2.1.2)
+    launchy (2.4.3)
+      addressable (~> 2.3)
     law_school_outcomes (1.0.0)
       domainatrix (~> 0.0.11)
       pdf-reader (~> 2.0)
@@ -52,6 +54,7 @@ PLATFORMS
 
 DEPENDENCIES
   capybara
+  launchy
   law_school_outcomes
   poltergeist
 
