@@ -11,7 +11,7 @@ brew link --force qt55
 ## Installation
 
 ```` sh
-git clone __________
+git clone git@github.com:s2t2/law-school-outcomes-api.git
 cd law-school-outcomes-api/
 bundle install
 ````
@@ -21,3 +21,5 @@ bundle install
 ```` sh
 ruby script/parse_pdfs.rb
 ````
+
+## [LICENSE](/LICENSE)
