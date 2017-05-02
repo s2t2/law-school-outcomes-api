@@ -34,3 +34,7 @@ This works much better than capybara for the purpose of downloading a file and a
   + http://stackoverflow.com/questions/16499069/how-to-save-file-downloaded-by-button-click-with-mechanize
   + http://docs.seattlerb.org/mechanize/GUIDE_rdoc.html
   + http://docs.seattlerb.org/mechanize/EXAMPLES_rdoc.html
+
+### Reading PDF Files
+
+  + http://ruby-doc.org/core-2.0.0/IO.html#method-c-new-label-IO+Open+Mode
